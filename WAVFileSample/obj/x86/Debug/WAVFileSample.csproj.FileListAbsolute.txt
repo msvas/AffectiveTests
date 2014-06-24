@@ -1,0 +1,8 @@
+C:\Users\msvas\AppData\Local\Temporary Projects\WAVFileSample\bin\Debug\WAVFileSample.exe
+C:\Users\msvas\AppData\Local\Temporary Projects\WAVFileSample\bin\Debug\WAVFileSample.pdb
+C:\Users\msvas\AppData\Local\Temporary Projects\WAVFileSample\obj\x86\Debug\WAVFileSample.exe
+C:\Users\msvas\AppData\Local\Temporary Projects\WAVFileSample\obj\x86\Debug\WAVFileSample.pdb
+C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\obj\x86\Debug\WAVFileSample.exe
+C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\obj\x86\Debug\WAVFileSample.pdb
+C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\WAVFileSample.exe
+C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\WAVFileSample.pdb
