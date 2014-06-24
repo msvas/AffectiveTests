@@ -47,8 +47,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuxClass.cs" />
+    <Compile Include="DistanceMeasure.cs" />
+    <Compile Include="Dtw.cs" />
+    <Compile Include="IDtw.cs" />
+    <Compile Include="Preprocessing\CentralizationPreprocessor.cs" />
+    <Compile Include="Preprocessing\IPreprocessor.cs" />
+    <Compile Include="Preprocessing\NonePreprocessor.cs" />
+    <Compile Include="Preprocessing\NormalizationPreprocessor.cs" />
+    <Compile Include="Preprocessing\StandardizationPreprocessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeriesVariable.cs" />
     <Compile Include="SimpleDTW.cs" />
   </ItemGroup>
   <ItemGroup>

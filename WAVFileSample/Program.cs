@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 //using NAudio.Wave;
 
-namespace WAVFileSample
+namespace NDtw
 {
     class Program
     {
@@ -59,10 +59,12 @@ namespace WAVFileSample
             }
 
             // Allocate memory (right will be null if only mono sound)
-            left = new double[samples];
+            //left = new double[samples];
+            left = new double[1000];
             if (channels == 2)
             {
-                right = new double[samples];
+                //right = new double[samples];
+                right = new double[1000];
             }
             else
             {
@@ -71,7 +73,8 @@ namespace WAVFileSample
 
             // Write to double array/s:
             int i = 0;
-            while (pos < wav.Length)
+            //while (pos < wav.Length)
+            while (i < 1000)
             {
                 left[i] = bytesToDouble(wav[pos], wav[pos + 1]);
                 pos += 2;
