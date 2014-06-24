@@ -6,3 +6,6 @@ C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample
 C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\obj\x86\Debug\WAVFileSample.pdb
 C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\WAVFileSample.exe
 C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\WAVFileSample.pdb
+C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\obj\x86\Debug\WAVFileSample.csprojResolveAssemblyReference.cache
+C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\NAudio.dll
+C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\NAudio.xml

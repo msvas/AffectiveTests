@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+//using NAudio.Wave;
 
 namespace WAVFileSample
 {
@@ -12,10 +13,10 @@ namespace WAVFileSample
         {
             AuxClass solver = new AuxClass();
             //Console.WriteLine("oi");
-            foreach (double i in solver.leftAudio)
+            /*foreach (double i in solver.leftAudio)
             {
                 Console.WriteLine(i);
-            }
+            }*/
             Console.ReadKey();
         }
 
@@ -32,6 +33,8 @@ namespace WAVFileSample
         public void openWav(string filename, out double[] left, out double[] right)
         {
             byte[] wav = File.ReadAllBytes(filename);
+
+            //Console.WriteLine(wav.Length);
 
             // Determine if mono or stereo
             int channels = wav[22];     // Forget byte 23 as 99.999% of WAVs are 1 or 2 channels
