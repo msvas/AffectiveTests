@@ -9,6 +9,8 @@ namespace NDtw
 {
     class Program
     {
+        int size = 1024;
+
         static void Main(string[] args)
         {
             AuxClass solver = new AuxClass();
@@ -16,8 +18,8 @@ namespace NDtw
             /*foreach (double i in solver.leftAudio)
             {
                 Console.WriteLine(i);
-            }*/
-            Console.ReadKey();
+            }
+            Console.ReadKey();*/
         }
 
         // convert two bytes to one double in the range -1 to 1
@@ -59,12 +61,12 @@ namespace NDtw
             }
 
             // Allocate memory (right will be null if only mono sound)
-            //left = new double[samples];
-            left = new double[1000];
+            left = new double[samples];
+            //left = new double[size];
             if (channels == 2)
             {
-                //right = new double[samples];
-                right = new double[1000];
+                right = new double[samples];
+                //right = new double[size];
             }
             else
             {
@@ -73,8 +75,8 @@ namespace NDtw
 
             // Write to double array/s:
             int i = 0;
-            //while (pos < wav.Length)
-            while (i < 1000)
+            while (pos < wav.Length)
+            //while (i < size)
             {
                 left[i] = bytesToDouble(wav[pos], wav[pos + 1]);
                 pos += 2;

@@ -16,7 +16,7 @@ namespace NDtw
         ArrayList pathY;
         ArrayList distanceList;
         double sum;
-        int chunkSize = 1000;
+        int chunkSize = 1024;
 
         public SimpleDTW(double[] _x, double[] _y)
         {

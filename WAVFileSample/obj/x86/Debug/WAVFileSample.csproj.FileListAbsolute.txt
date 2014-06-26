@@ -9,3 +9,10 @@ C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample
 C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\obj\x86\Debug\WAVFileSample.csprojResolveAssemblyReference.cache
 C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\NAudio.dll
 C:\Users\msvas\documents\visual studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\NAudio.xml
+C:\Users\msvas\Documents\Visual Studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\bin32\libiomp5md.dll
+C:\Users\msvas\Documents\Visual Studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\bin32\mkl_custom.dll
+C:\Users\msvas\Documents\Visual Studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\bin64\libiomp5md.dll
+C:\Users\msvas\Documents\Visual Studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\bin64\mkl_custom.dll
+C:\Users\msvas\Documents\Visual Studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\ILNumerics.dll
+C:\Users\msvas\Documents\Visual Studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\ILNumerics.xml
+C:\Users\msvas\Documents\Visual Studio 2010\Projects\WAVFileSample\WAVFileSample\bin\Debug\alglibnet2.dll

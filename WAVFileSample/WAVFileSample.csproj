@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="alglibnet2">
+      <HintPath>..\..\..\..\..\Downloads\alglib-3.8.2.csharp\csharp\alglibnet2.dll</HintPath>
+    </Reference>
+    <Reference Include="ILNumerics">
+      <HintPath>..\packages\ILNumerics.3.3.3.0\lib\ILNumerics.dll</HintPath>
+    </Reference>
     <Reference Include="NAudio">
       <HintPath>..\..\..\..\..\Downloads\NAudio-Release\NAudio.dll</HintPath>
     </Reference>
@@ -49,6 +55,8 @@
     <Compile Include="AuxClass.cs" />
     <Compile Include="DistanceMeasure.cs" />
     <Compile Include="Dtw.cs" />
+    <Compile Include="FFT.cs" />
+    <Compile Include="Correlation.cs" />
     <Compile Include="IDtw.cs" />
     <Compile Include="Preprocessing\CentralizationPreprocessor.cs" />
     <Compile Include="Preprocessing\IPreprocessor.cs" />
@@ -61,7 +69,22 @@
     <Compile Include="SimpleDTW.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin32\libiomp5md.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="bin32\mkl_custom.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="bin64\libiomp5md.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="bin64\mkl_custom.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="wavTest.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
