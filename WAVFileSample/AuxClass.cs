@@ -12,8 +12,8 @@ namespace NDtw
         public double[] rightAudio;
         public double[] leftCompared;
         public double[] rightCompared;
-        string soundName = "ambientWav.wav";
-        string comparedSound = "strokingWav3.wav";
+        string soundName = "strokingWav10.wav";
+        string comparedSound = "ambientWav4.wav";
         Program program = new Program();
         LomontFFT fft = new LomontFFT();
         Correlation crossCorr;
