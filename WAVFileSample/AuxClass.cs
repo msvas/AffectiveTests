@@ -18,9 +18,15 @@ namespace NDtw
         LomontFFT fft = new LomontFFT();
         Correlation crossCorr;
         public int offset;
+        RealTime recorder = new RealTime();
 
         public AuxClass()
         {
+            if (recorder.checkMic())
+            {
+                recorder.startRecording();
+            }
+
             program.openWav(soundName, out leftAudio, out rightAudio);
             program.openWav(comparedSound, out leftCompared, out rightCompared);
 
