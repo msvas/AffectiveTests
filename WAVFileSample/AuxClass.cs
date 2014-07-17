@@ -12,8 +12,8 @@ namespace NDtw
         public double[] rightAudio;
         public double[] leftCompared;
         public double[] rightCompared;
-        string soundName = "strokingWav10.wav";
-        string comparedSound = "ambientWav4.wav";
+        string soundName = @"stroking\011.wav";
+        int fileId;
         Program program = new Program();
         LomontFFT fft = new LomontFFT();
         Correlation crossCorr;
@@ -23,12 +23,12 @@ namespace NDtw
         public AuxClass()
         {
             if (recorder.checkMic())
-            {
                 recorder.startRecording();
-            }
 
             program.openWav(soundName, out leftAudio, out rightAudio);
-            program.openWav(comparedSound, out leftCompared, out rightCompared);
+            program.openWav(@"C:\Users\msvas\Desktop\Test0001.wav", out leftCompared, out rightCompared);
+
+            #region stuff
 
             //double cost = new Dtw(leftAudio, leftCompared).GetCost();
             //Console.WriteLine(cost);
@@ -60,28 +60,13 @@ namespace NDtw
 
             //fft.RealFFT(leftCompared, true);
 
-            
+            #endregion
+
             double value;
             double[] result;
             alglib.corrr1d(leftAudio, leftAudio.Length, leftCompared, leftCompared.Length, out result);
 
-            /*
-            foreach (double i in result)
-            {
-                Console.WriteLine(i);
-            }
-            Console.ReadKey();
-            */
-
             crossCorr = new Correlation(result, leftAudio, leftCompared, out offset, out value);
-            
-            /*double[] result;
-            alglib.corrr1d(leftAudio, leftAudio.Length, leftCompared, leftCompared.Length, out result);
-
-            foreach (double i in result)
-            {
-                Console.WriteLine(i);
-            }*/
 
             Console.WriteLine(value);
             Console.ReadKey();

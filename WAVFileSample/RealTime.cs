@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
 using NAudio.Wave;
 using Microsoft.Xna.Framework.Audio;
 
@@ -36,6 +32,8 @@ namespace NDtw
 
             waveFile = new WaveFileWriter(@"C:\Users\msvas\Desktop\Test0001.wav", waveSource.WaveFormat);
 
+            Console.ReadKey();
+
             waveSource.StartRecording();
 
             Console.ReadKey();
@@ -44,7 +42,8 @@ namespace NDtw
             return true;
         }
 
-        public void StartBtn_Click(object sender, EventArgs e)
+        #region button
+        /*public void StartBtn_Click(object sender, EventArgs e)
         {
             //StartBtn.Enabled = false;
             //StopBtn.Enabled = true;
@@ -65,7 +64,8 @@ namespace NDtw
             //StopBtn.Enabled = false;
 
             waveSource.StopRecording();
-        }
+        }*/
+        #endregion
 
         void waveSource_DataAvailable(object sender, WaveInEventArgs e)
         {
