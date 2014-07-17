@@ -30,15 +30,16 @@ namespace NDtw
             waveSource.DataAvailable += new EventHandler<WaveInEventArgs>(waveSource_DataAvailable);
             waveSource.RecordingStopped += new EventHandler<StoppedEventArgs>(waveSource_RecordingStopped);
 
-            waveFile = new WaveFileWriter(@"C:\Users\msvas\Desktop\Test0001.wav", waveSource.WaveFormat);
-
-            Console.ReadKey();
+            waveFile = new WaveFileWriter("Test0001.wav", waveSource.WaveFormat);
 
             waveSource.StartRecording();
+            return true;
+        }
 
-            Console.ReadKey();
-
+        public bool stopRecording()
+        {
             waveSource.StopRecording();
+
             return true;
         }
 
