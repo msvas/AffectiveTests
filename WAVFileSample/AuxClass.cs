@@ -13,7 +13,7 @@ namespace NDtw
         public double[] rightAudio;
         public double[] leftCompared;
         public double[] rightCompared;
-        string soundName = @"stroking\011.wav";
+        string soundName = @"howling\001.wav";
         int fileId;
         Program program = new Program();
         LomontFFT fft = new LomontFFT();
