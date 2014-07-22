@@ -82,6 +82,11 @@ namespace NDtw
 
                     stopwatchProcess.Stop();
                     Console.WriteLine("Value: " + value);
+
+                    if (value > 0.4)
+                        Console.WriteLine("Action: Stroking");
+                    else
+                        Console.WriteLine("Action: Not Stroking");
                     Console.WriteLine("Time elapsed recording: " + stopwatchRecord.ElapsedMilliseconds + " ms");
                     Console.WriteLine("Time elapsed processing: " + stopwatchProcess.ElapsedMilliseconds + " ms");
                     Console.WriteLine("Press spacebar to close, anything else to start over \r\n");
