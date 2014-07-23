@@ -38,7 +38,12 @@ namespace NDtw
 
         public bool stopRecording()
         {
-            waveSource.StopRecording();
+            if (waveSource != null)
+            {
+                waveSource.StopRecording();
+                waveFile.Dispose();
+                waveFile = null;
+            }
 
             return true;
         }
