@@ -32,9 +32,18 @@ namespace NDtw
         }
 
         // Returns left and right double arrays. 'right' will be null if sound is mono.
-        public void openWav(string filename, out double[] left, out double[] right)
+        public void openWav(string filename, MemoryStream auxArray, out double[] left, out double[] right)
         {
-            byte[] wav = File.ReadAllBytes(filename);
+            byte[] wav;
+            if (auxArray != null)
+            {
+                wav = auxArray.ToArray();
+                //Console.WriteLine(wav.Length);
+            }
+            else
+            {
+                wav = File.ReadAllBytes(filename);
+            }
 
             //Console.WriteLine(wav.Length);
 

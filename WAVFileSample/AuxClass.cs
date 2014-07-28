@@ -14,7 +14,7 @@ namespace NDtw
         public static double[] rightAudio;
         public static double[] leftCompared;
         public static double[] rightCompared;
-        private static string soundName = @"stroking\001.wav";
+        private static string soundName = @"stroking\snap.wav";
         static Program program = new Program();
         public static LomontFFT fft = new LomontFFT();
         static Correlation crossCorr;
@@ -22,6 +22,7 @@ namespace NDtw
         private static RealTime recorder = new RealTime();
         private static Stopwatch stopwatchProcess = new Stopwatch();
         private static Stopwatch stopwatchRecord = new Stopwatch();
+        private static Stopwatch stopwatchTotal = new Stopwatch();
         private static Timer recordWindow = new System.Timers.Timer(500);
 
         public AuxClass()
@@ -29,7 +30,8 @@ namespace NDtw
             if (recorder.checkMic())
             {
                 //Console.WriteLine("Press any key to start recording");
-                //Console.ReadKey(); 
+                //Console.ReadKey();
+                stopwatchTotal.Start();
                 Console.WriteLine("Recording...");
                 stopwatchRecord.Start();
                 recorder.startRecording();
@@ -39,6 +41,7 @@ namespace NDtw
                 recordWindow.Enabled = true;
 
                 Console.ReadKey();
+                stopwatchTotal.Stop();
                 recordWindow.Enabled = false;
             }
         }
@@ -51,8 +54,10 @@ namespace NDtw
             Console.WriteLine("Sound recorded. Processing...");
 
             stopwatchProcess.Start();
-            program.openWav(soundName, out leftAudio, out rightAudio);
-            program.openWav("Test0001.wav", out leftCompared, out rightCompared);
+            program.openWav(soundName, null, out leftAudio, out rightAudio);
+            program.openWav(null, recorder.wavMem(), out leftCompared, out rightCompared);
+
+            recorder.disposeStream();
 
             #region stuff
 
@@ -104,7 +109,11 @@ namespace NDtw
                 Console.WriteLine("Action: Not Stroking");
             Console.WriteLine("Time elapsed recording: " + stopwatchRecord.ElapsedMilliseconds + " ms");
             Console.WriteLine("Time elapsed processing: " + stopwatchProcess.ElapsedMilliseconds + " ms");
+            Console.WriteLine("Total time elapsed: " + stopwatchTotal.ElapsedMilliseconds + " ms\r\n");
             //Console.WriteLine("Press spacebar to close, anything else to start over \r\n");
+
+            stopwatchRecord.Reset();
+            stopwatchProcess.Reset();
 
             Console.WriteLine("Recording...");
             recorder.startRecording();

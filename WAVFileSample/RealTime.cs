@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using NAudio.Wave;
 using Microsoft.Xna.Framework.Audio;
 
@@ -8,10 +9,13 @@ namespace NDtw
     {
         public WaveInEvent waveSource = null;
         public WaveFileWriter waveFile = null;
+        public MemoryStream audioStream;
+        //public byte[] wavOut;
         Microphone  mic = Microphone.Default;
         //bool isMicrophoneRecording;
         bool hasData = false;
         int timer = 0;
+        WaveBuffer buffer;
 
         public bool checkMic()
         {
@@ -29,8 +33,10 @@ namespace NDtw
 
             waveSource.DataAvailable += new EventHandler<WaveInEventArgs>(waveSource_DataAvailable);
             waveSource.RecordingStopped += new EventHandler<StoppedEventArgs>(waveSource_RecordingStopped);
+            
+            audioStream = new MemoryStream();
 
-            waveFile = new WaveFileWriter("Test0001.wav", waveSource.WaveFormat);
+            waveFile = new WaveFileWriter(audioStream, waveSource.WaveFormat);
 
             waveSource.StartRecording();
             return true;
@@ -41,11 +47,14 @@ namespace NDtw
             if (waveSource != null)
             {
                 waveSource.StopRecording();
-                waveFile.Dispose();
-                waveFile = null;
             }
 
             return true;
+        }
+
+        public MemoryStream wavMem()
+        {
+            return audioStream;
         }
 
         #region button
@@ -78,7 +87,15 @@ namespace NDtw
             if (waveFile != null)
             {
                 waveFile.Write(e.Buffer, 0, e.BytesRecorded);
-                waveFile.Flush();
+            }
+        }
+
+        public void disposeStream()
+        {
+            if (waveFile != null)
+            {
+                waveFile.Dispose();
+                waveFile = null;
             }
         }
 
@@ -89,14 +106,6 @@ namespace NDtw
                 waveSource.Dispose();
                 waveSource = null;
             }
-
-            if (waveFile != null)
-            {
-                waveFile.Dispose();
-                waveFile = null;
-            }
-
-            //StartBtn.Enabled = true;
         }
     }
 }
