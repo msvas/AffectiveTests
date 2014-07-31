@@ -3,19 +3,14 @@ using System.IO;
 using NAudio.Wave;
 using Microsoft.Xna.Framework.Audio;
 
-namespace NDtw
+namespace WAVComparison
 {
     public class RealTime
     {
         public WaveInEvent waveSource = null;
         public WaveFileWriter waveFile = null;
         public MemoryStream audioStream;
-        //public byte[] wavOut;
         Microphone  mic = Microphone.Default;
-        //bool isMicrophoneRecording;
-        bool hasData = false;
-        int timer = 0;
-        WaveBuffer buffer;
 
         public bool checkMic()
         {
@@ -56,31 +51,6 @@ namespace NDtw
         {
             return audioStream;
         }
-
-        #region button
-        /*public void StartBtn_Click(object sender, EventArgs e)
-        {
-            //StartBtn.Enabled = false;
-            //StopBtn.Enabled = true;
-
-            //waveSource = new WaveInEvent();
-            waveSource.WaveFormat = new WaveFormat(44100, 1);
-
-            waveSource.DataAvailable += new EventHandler<WaveInEventArgs>(waveSource_DataAvailable);
-            waveSource.RecordingStopped += new EventHandler<StoppedEventArgs>(waveSource_RecordingStopped);
-
-            waveFile = new WaveFileWriter(@"C:\Users\msvas\Desktop\Test0001.wav", waveSource.WaveFormat);
-
-            waveSource.StartRecording();
-        }
-
-        public void StopBtn_Click(object sender, EventArgs e)
-        {
-            //StopBtn.Enabled = false;
-
-            waveSource.StopRecording();
-        }*/
-        #endregion
 
         void waveSource_DataAvailable(object sender, WaveInEventArgs e)
         {

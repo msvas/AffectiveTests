@@ -5,21 +5,13 @@ using System.Text;
 using System.IO;
 using NAudio.Wave;
 
-namespace NDtw
+namespace WAVComparison
 {
     class Program
     {
-        int size = 1024;
-
         static void Main(string[] args)
         {
-            AuxClass solver = new AuxClass();
-            //Console.WriteLine("oi");
-            /*foreach (double i in solver.leftAudio)
-            {
-                Console.WriteLine(i);
-            }
-            Console.ReadKey();*/
+            Recorder solver = new Recorder();
         }
 
         // convert two bytes to one double in the range -1 to 1

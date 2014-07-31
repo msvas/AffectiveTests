@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WAVFileSample", "WAVFileSample\WAVFileSample.csproj", "{9A20AA5F-CA63-47E8-A93D-95CA698A99C9}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WAVComparison", "WAVFileSample\WAVComparison.csproj", "{9A20AA5F-CA63-47E8-A93D-95CA698A99C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

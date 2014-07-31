@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ILNumerics;
 using System.Diagnostics;
 using System.Timers;
 
-namespace NDtw
+namespace WAVComparison
 {
-    public class AuxClass
+    public class Recorder
     {
         public static double[] leftAudio;
         public static double[] rightAudio;
@@ -16,7 +15,6 @@ namespace NDtw
         public static double[] rightCompared;
         private static string soundName = @"stroking\snap.wav";
         static Program program = new Program();
-        public static LomontFFT fft = new LomontFFT();
         static Correlation crossCorr;
         public static int offset;
         private static RealTime recorder = new RealTime();
@@ -25,17 +23,14 @@ namespace NDtw
         private static Stopwatch stopwatchTotal = new Stopwatch();
         private static Timer recordWindow = new System.Timers.Timer(500);
 
-        public AuxClass()
+        public Recorder()
         {
             if (recorder.checkMic())
             {
-                //Console.WriteLine("Press any key to start recording");
-                //Console.ReadKey();
                 stopwatchTotal.Start();
                 Console.WriteLine("Recording...");
                 stopwatchRecord.Start();
                 recorder.startRecording();
-                //Console.ReadKey();
 
                 recordWindow.Elapsed += OnTimedEvent;
                 recordWindow.Enabled = true;
@@ -58,40 +53,6 @@ namespace NDtw
             program.openWav(null, recorder.wavMem(), out leftCompared, out rightCompared);
 
             recorder.disposeStream();
-
-            #region stuff
-
-            //double cost = new Dtw(leftAudio, leftCompared).GetCost();
-            //Console.WriteLine(cost);
-
-            /*
-            Console.WriteLine(leftAudio.Length + " " + leftCompared.Length);
-            SimpleDTW comparison = new SimpleDTW(leftAudio, leftCompared);
-            comparison.computeDTW();
-            Console.WriteLine(comparison.getSum());
-            */
-
-            /*
-            foreach (double i in leftAudio)
-            {
-                Console.WriteLine(i);
-            }
-            Console.ReadKey();
-            */
-
-            //fft.RealFFT(leftAudio, true);
-
-            /*
-            foreach (double i in leftCompared)
-            {
-                Console.WriteLine(i);
-            }
-            Console.ReadKey();
-            */
-
-            //fft.RealFFT(leftCompared, true);
-
-            #endregion
 
             double value;
             double[] result;
