@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using NAudio.Wave;
 using Microsoft.Xna.Framework.Audio;
+using System.Timers;
+using System.Diagnostics;
 
 namespace WAVComparison
 {
@@ -11,6 +14,10 @@ namespace WAVComparison
         public WaveFileWriter waveFile = null;
         public MemoryStream audioStream;
         Microphone  mic = Microphone.Default;
+        private bool hasStopped = false;
+        private static Stopwatch stopwatchRecord = new Stopwatch();
+
+        private static object syncLock = new object();
 
         public bool checkMic()
         {
@@ -30,9 +37,11 @@ namespace WAVComparison
             waveSource.RecordingStopped += new EventHandler<StoppedEventArgs>(waveSource_RecordingStopped);
             
             audioStream = new MemoryStream();
-
             waveFile = new WaveFileWriter(audioStream, waveSource.WaveFormat);
 
+            stopwatchRecord.Start();
+            //Monitor.Enter(syncLock);
+            hasStopped = false;
             waveSource.StartRecording();
             return true;
         }
@@ -42,8 +51,11 @@ namespace WAVComparison
             if (waveSource != null)
             {
                 waveSource.StopRecording();
+                //Monitor.Exit(syncLock);
+                stopwatchRecord.Stop();
             }
-
+            Monitor.Enter(syncLock);
+            
             return true;
         }
 
@@ -67,15 +79,27 @@ namespace WAVComparison
                 waveFile.Dispose();
                 waveFile = null;
             }
-        }
-
-        void waveSource_RecordingStopped(object sender, StoppedEventArgs e)
-        {
             if (waveSource != null)
             {
                 waveSource.Dispose();
                 waveSource = null;
             }
+            Monitor.Exit(syncLock);
+        }
+
+        void waveSource_RecordingStopped(object sender, StoppedEventArgs e)
+        {
+            hasStopped = true;
+        }
+
+        public float getStopWatchRecord()
+        {
+            return stopwatchRecord.ElapsedMilliseconds;
+        }
+
+        public void resetSWRecord()
+        {
+            stopwatchRecord.Reset();
         }
     }
 }

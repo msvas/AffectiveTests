@@ -19,17 +19,19 @@ namespace WAVComparison
         public static int offset;
         private static RealTime recorder = new RealTime();
         private static Stopwatch stopwatchProcess = new Stopwatch();
-        private static Stopwatch stopwatchRecord = new Stopwatch();
+        //private static Stopwatch stopwatchRecord = new Stopwatch();
         private static Stopwatch stopwatchTotal = new Stopwatch();
+
         private static Timer recordWindow = new System.Timers.Timer(500);
 
         public Recorder()
         {
             if (recorder.checkMic())
             {
+                program.openWav(soundName, null, out leftAudio, out rightAudio);
                 stopwatchTotal.Start();
                 Console.WriteLine("Recording...");
-                stopwatchRecord.Start();
+                //stopwatchRecord.Start();
                 recorder.startRecording();
 
                 recordWindow.Elapsed += OnTimedEvent;
@@ -44,12 +46,11 @@ namespace WAVComparison
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             recorder.stopRecording();
-            stopwatchRecord.Stop();
+            //stopwatchRecord.Stop();
 
             Console.WriteLine("Sound recorded. Processing...");
 
             stopwatchProcess.Start();
-            program.openWav(soundName, null, out leftAudio, out rightAudio);
             program.openWav(null, recorder.wavMem(), out leftCompared, out rightCompared);
 
             recorder.disposeStream();
@@ -65,20 +66,19 @@ namespace WAVComparison
             Console.WriteLine("Value: " + value);
 
             if (value > 0.4)
-                Console.WriteLine("Action: Stroking");
+                Console.WriteLine("Action: True");
             else
-                Console.WriteLine("Action: Not Stroking");
-            Console.WriteLine("Time elapsed recording: " + stopwatchRecord.ElapsedMilliseconds + " ms");
+                Console.WriteLine("Action: False");
+            Console.WriteLine("Time elapsed recording: " + recorder.getStopWatchRecord() + " ms");
             Console.WriteLine("Time elapsed processing: " + stopwatchProcess.ElapsedMilliseconds + " ms");
             Console.WriteLine("Total time elapsed: " + stopwatchTotal.ElapsedMilliseconds + " ms\r\n");
-            //Console.WriteLine("Press spacebar to close, anything else to start over \r\n");
 
-            stopwatchRecord.Reset();
+            recorder.resetSWRecord();
             stopwatchProcess.Reset();
 
             Console.WriteLine("Recording...");
             recorder.startRecording();
-            stopwatchRecord.Start();
+            //stopwatchRecord.Start();
         }
     }
 }
